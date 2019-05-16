@@ -11,6 +11,11 @@ class Profile(models.Model):
         profile = cls.objects.all()
         return profile
 
+    @classmethod
+    def search_by_username(cls,search_term):
+        profile = cls.objects.filter(username__icontains=search_term)
+        return profile
+
     def __str__(self):
         return self.profile
 

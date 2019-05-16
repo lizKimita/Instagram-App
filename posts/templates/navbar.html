@@ -1,4 +1,6 @@
+
 <nav class="navbar sticky-top navbar-expand-lg navbar-fixed-top bg-light">
+  <div class="container">
     <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
           <a class="nav-link" href="{%url 'allImages' %}"><img src="https://cdn2.iconfinder.com/data/icons/harmonicons-04/64/instagram-512.png" alt="" style="width:30px;height:30px;"></i> <span class="sr-only">(current)</span></a>
@@ -9,18 +11,47 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <form class="form-inline">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline my-2 my-sm-0" type="submit">Search</button>
-        </form>
+        <form class="navbar-form" role="search" action="">
+            <div class="input">
+                <input type="text" class="form-control" placeholder="search" name="search_profile">
+            </div>
+            </form>
     </div>
+    <div class="col-sm-6 col-md-6">
+        
+      </div>
+    
     <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
           <a class="nav-link" href="{%url 'allImages' %}"><img src="http://www.clker.com/cliparts/f/n/o/m/6/C/transparent-heart.svg" alt="" style="width:45px;height:30px;"></i></a>
         </li>
-        <li class="nav-item active">
-            <a class="nav-link" href="{%url 'allImages' %}"><img src="https://images.vexels.com/media/users/3/147103/isolated/lists/e9bf9a44d83e00b1535324b0fda6e91a-instagram-profile-line-icon.png" alt="" style="width:40px;height:35px;"></i></a>
-          </li>
+            {% if user.is_authenticated %}
+              <li class="dropdown">
+                <!-- <a href="#" class="dropdown-toggle btn btn-default" data-toggle="dropdown" role="button" aria-expanded="false">Account
+                          <span class="caret"></span>
+                      </a> -->
+                      <a class="nav-link" href="{%url 'allImages' %}" data-toggle="dropdown" role="button"><img src="https://image.flaticon.com/icons/png/128/118/118781.png" alt="" style="width:30px;height:30px;"></i></a>
+                <ul class="dropdown-menu" role="menu">
+                  <li>
+                    <a href="">Home</a>
+                  </li>
+                  <li>
+                    <a href="/accounts/password/change">Change Password</a>
+                  </li>
+                  <li>
+                    <a href="/logout">Logout</a>
+                  </li>
+                </ul>
+              </li>
+            
+            {% else %}
+            <li>
+              <a class='btn btn-default' href="/accounts/login">Login</a>
+            </li>
+            {% endif %}
+          
+          
       </ul>
 
+    </div>
   </nav>
