@@ -6,7 +6,7 @@
             <div class="container main-container">
                 <div class="row">
                     <!-- side content -->
-                    <div class="col-sm-3 about-me about-side text-center hidden-xs">
+                    <div class="col-md-2 about-me about-side text-center hidden-xs">
                             <img src="" width=200 class="profile-pic img-responsive center-block">
                             <h1>Elizabeth Kimita</h1>
                             <footer class="page-footer font-large">
@@ -18,29 +18,29 @@
                                 <!-- </div> -->
                                 </footer>
                     </div>
-    
                     <!-- main content -->
-                    <div class="col-sm-9 col-sm-offset-3" style="padding-top:100px">
+                    <div class="col-md-10 col-sm-offset-3" style="padding-top:100px">
                             {% for image_item in image %}
                         <div class="row work-item-row">
-                                <div class="col-sm-8 col-sm-offset-2 project" >
-                                <div class="card" style="width: 50rem; height: 50rem;">
+                                <div class="col-md-10 col-sm-offset-2 project" >
+                                <div class="card" style="width: 70rem; height: 80rem;">
                                         <ul class="list-group list-group-flush">
                                                 <li class="list-group-item">USERNAME Section</li>
                                         </ul>
-                                        <img src="{{image_item.image.url}}" class="img-responsive" alt="Image" style=" width:600px;height:300px;padding:0;"alt="">
+                                        <img src="{{image_item.image.url}}" class="img-responsive" alt="Image" style=" width:800px;height:400px;padding:0;"alt="">
                                         <div class="card-body">
                                           <h5 class="card-title">Card title</h5>
                                             <p>{{image_item.image_caption}}</p>
                                             <p>{{image_item.publish_date}}</p>
+                                            <p> COMMENTS SECTION</p>
                                         </div>
-                                        <ul class="list-group list-group-flush">
-                                          <li class="list-group-item">Add a comment</li>
-                                        </ul>
+                                        <form class="form-inline">
+                                                <input class="form-control mr-md-2" type="search" placeholder="Add a Comment" aria-label="Search">
+                                                
+                                            </form>
                                       </div>
                                     </div>
                         </div>
-                    
                     {% empty %}
                     <div class="row">
                             <h2 class="text-center">There is no Image yet!</h2>
