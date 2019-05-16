@@ -1,5 +1,5 @@
 <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="{%url 'allImages' %}">My Gallery</a>
+    <a class="navbar-brand" href="{%url 'allImages' %}">Instagram</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -14,9 +14,6 @@
             Filter Location
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            {% for local in locations%}
-            <a class="dropdown-item" href="/filter/{{local.id}}" style="font-size:90%">{{local.location}}</a>
-            {% endfor %}
            
           </div>
         </li>
