@@ -5,6 +5,7 @@ from django.conf.urls.static import static
 
 urlpatterns=[
     url(r'^$',views.all_posts,name='allImages'),
+   
 ]
 
 if settings.DEBUG:

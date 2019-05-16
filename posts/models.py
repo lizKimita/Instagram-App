@@ -6,7 +6,6 @@ class Profile(models.Model):
     profile_photo = models.ImageField(upload_to = 'images/')
     Bio = models.CharField(max_length = 100)
 
-
     @classmethod
     def get_profile(cls):
         profile = cls.objects.all()

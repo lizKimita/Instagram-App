@@ -2,38 +2,53 @@
 
 {% block content %}
     {{block.super}}
-
-<div class="container">
-    <div class="row">
-        <div class="scroll" style="margin-top:120px">    
-            {% for image_item in image %}
-            <div class="col-sm-8 col-sm-offset-3">
-                <div class="row work-item-row">
-                    <div class="col-sm-8 col-sm-offset-2 project">
-                            <img src="{{image_item.image.url}}" class="img-responsive" alt="Image" style=" width:600px;height:300px;padding:0;"alt="">
+ 
+            <div class="container main-container">
+                <div class="row">
+                    <!-- side content -->
+                    <div class="col-sm-3 about-me about-side text-center hidden-xs">
+                            <img src="" width=200 class="profile-pic img-responsive center-block">
+                            <h1>Elizabeth Kimita</h1>
+                            <footer class="page-footer font-large">
+                                <!-- <div class="footer-copyright text-center py-3"> -->
+                                   <p class="footer">About Us.Support.Press.API.Jobs.Privacy.</p> 
+                                    <p class="footer">Terms.Directory.Profiles.Hashtags.Language</p>   
+                                    <br> 
+                                   <p class="footer">© 2019 INSTAGRAM </p> 
+                                <!-- </div> -->
+                                </footer>
                     </div>
+    
+                    <!-- main content -->
+                    <div class="col-sm-9 col-sm-offset-3" style="padding-top:100px">
+                            {% for image_item in image %}
+                        <div class="row work-item-row">
+                                <div class="col-sm-8 col-sm-offset-2 project" >
+                                <div class="card" style="width: 50rem; height: 50rem;">
+                                        <ul class="list-group list-group-flush">
+                                                <li class="list-group-item">USERNAME Section</li>
+                                        </ul>
+                                        <img src="{{image_item.image.url}}" class="img-responsive" alt="Image" style=" width:600px;height:300px;padding:0;"alt="">
+                                        <div class="card-body">
+                                          <h5 class="card-title">Card title</h5>
+                                            <p>{{image_item.image_caption}}</p>
+                                            <p>{{image_item.publish_date}}</p>
+                                        </div>
+                                        <ul class="list-group list-group-flush">
+                                          <li class="list-group-item">Add a comment</li>
+                                        </ul>
+                                      </div>
+                                    </div>
+                        </div>
+                    
+                    {% empty %}
+                    <div class="row">
+                            <h2 class="text-center">There is no Image yet!</h2>
+                    </div>
+                        {% endfor %}
+                    </div> <!-- end main content -->
                 </div>
+    
             </div>
 
-            {% empty %}
-        <div class="row">
-                <h2 class="text-center">There is no Image yet!</h2>
-        </div>
-            {% endfor %}
-    
-        </div>
-
-        <div class="col-sm-3 about-me about-side text-center hidden-xs" style="margin-top:150px">
-                <img src="" width=300 class="profile-pic img-responsive center-block">
-                <h1 style="font-family: 'Courgette', cursive;">Elizabeth Wanjiku Kimita</h1>
-                <h2>Full Stack Developer</h2>
-                <h4><strong>Interests:</strong>  Software Engineering, Data Science and Artificial Intelligence </h4>
-                <!-- github -->
-                <a href="https://github.com/lizKimita" target="_blank"><img src="http://www.stickpng.com/assets/images/5847f98fcef1014c0b5e48c0.png" alt="" style="width:25px;height:25px;margin-right: 10px"></a>
-    
-                <!-- linkedin -->
-                <a href="https://www.linkedin.com/in/elizabeth-kimita-b936737b/" target="_blank"><img src="https://image.flaticon.com/icons/png/512/34/34227.png" alt="" style="width:25px;height:25px;"></a>
-            </div>
-    </div>
-</div>
 {% endblock %}
