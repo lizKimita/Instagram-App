@@ -30,9 +30,14 @@
                             <img src="{{image_item.image.url}}" class="img-responsive" alt="Image" style=" width:800px;height:400px;padding:0;"alt="">
                             <div class="card-body">
                                 <h5 class="card-title">Card title</h5>
-                                <p>{{image_item.image_caption}}</p>
+                                </p>{{image_item.image_caption}}</p>
                                 <p>{{image_item.publish_date}}</p>
                                 <p> COMMENTS SECTION</p>
+                                <div class="row">
+                                        {% autoescape on %}
+                                        {{image_item.post| safe}}
+                                       {% endautoescape %}
+                                </div>
                             </div>
                             <form class="navbar-form" role="search" action="">
                             <div class="input-group">

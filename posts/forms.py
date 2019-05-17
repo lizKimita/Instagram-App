@@ -1,5 +1,5 @@
 from django import forms
-from .models import Image, Comments, Profile
+from .models import Image, Comments
 
 class NewPostForm(forms.ModelForm):
     class Meta:
@@ -12,14 +12,6 @@ class NewPostForm(forms.ModelForm):
 class NewCommentForm(forms.ModelForm):
     class Meta:
         model = Comments
-        exclude = []
-        widgets = {
-            'tags': forms.CheckboxSelectMultiple(),
-        }
-
-class NewProfileForm(forms.ModelForm):
-    class Meta:
-        model = Profile
         exclude = []
         widgets = {
             'tags': forms.CheckboxSelectMultiple(),

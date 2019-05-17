@@ -2,40 +2,12 @@ from django.db import models
 from django.contrib.auth.models import User
 from tinymce.models import HTMLField
 
-
-
-# Create your models here.
-class Profile(models.Model):
-    username = models.CharField(max_length = 30)
-    profile_photo = models.ImageField(upload_to = 'images/')
-    Bio = models.CharField(max_length = 100)
-
-    @classmethod
-    def get_profile(cls):
-        profile = cls.objects.all()
-        return profile
-
-    @classmethod
-    def search_by_username(cls,search_term):
-        profile = cls.objects.filter(username__icontains=search_term)
-        return profile
-
-    def __str__(self):
-        return self.profile
-
-    def save_profile(self):
-        self.save()
-    
-    def delete_profile(self):
-        Profile.objects.filter().delete()
-
+# Create your models here
 class Image(models.Model):
     image = models.ImageField(upload_to = 'images/')
     image_name = models.CharField(max_length = 30)
-    image_caption = HTMLField()
+    image_caption = models.CharField(max_length = 200)
     publish_date = models.DateTimeField(auto_now_add=True)
-    editor = models.ForeignKey(User,on_delete=models.CASCADE, related_name = "editor")
-    likes = models.ManyToManyField(User, blank=True, related_name = "likes")
 
 
     @classmethod
@@ -54,13 +26,13 @@ class Image(models.Model):
         self.save()
 
     class Meta:
-        ordering = ['image']
+        ordering = ['-id']
 
 
 class Comments(models.Model):
     image = models.ForeignKey(User, on_delete=models.CASCADE, related_name = "images")
     author = models.ForeignKey(User, on_delete = models.CASCADE)
-    comment_message = HTMLField()
+    comment_message = models.CharField(max_length = 200)
     date_posted = models.DateTimeField(auto_now_add=True)
 
     @classmethod
