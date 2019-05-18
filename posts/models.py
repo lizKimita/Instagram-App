@@ -14,7 +14,7 @@ class Profile(models.Model):
         self.save()
 
     def delete_profile(self):
-        self.delete()
+        self.delete()   
 
     def update_bio(self,bio):
         self.bio = bio
@@ -27,8 +27,8 @@ class Profile(models.Model):
 
     @classmethod
     def search_by_username(cls,search_term):
-        news = cls.objects.filter(user__username=search_term)
-        return news
+        profile = cls.objects.filter(user__username=search_term)
+        return profile
 
     def __str__(self):
         return self.bio
@@ -59,6 +59,11 @@ class Image(models.Model):
     def update_image_caption(self, update):
         self.image_caption = update
         self.save()
+
+    # @classmethod
+    # def search_by_username(cls,search_term):
+    #     profile = cls.objects.filter(user__username=search_term)
+    #     return profile
 
     class Meta:
         ordering = ['-id']

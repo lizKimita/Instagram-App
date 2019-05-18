@@ -87,7 +87,31 @@ def profile(request):
 def image(request,image_id):
     try:
         image = Image.objects.get(id = image_id)
+
     except ObjectDoesNotExist:
+        
         raise Http404()
     return render(request,'all_posts/images.html',{'image':image})
 
+def search_results(request):
+
+    if 'profile' in request.GET and request.GET ["profile"]:
+        search_term = request.GET.get("profile")
+        searched_profiles = Profile.search_by_username(search_term)
+        message = f"{search_term}"
+
+        return render(request, 'all_posts/search.html', {"message":message, "profiles":searched_profiles})
+    else:
+        message = "You haven't seached for any users yet!"
+        return render(request, 'all_posts/search.html',{"message": message})
+
+def find_profile(request,profile_id):
+
+    try :
+        profile = Profile.objects.get(id = profile_id)
+
+    except ObjectDoesNotExist:
+        
+        raise Http404()
+
+    return render(request, 'all_posts/find_profile.html', {'profile':profile})

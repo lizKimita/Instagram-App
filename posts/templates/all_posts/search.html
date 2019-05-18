@@ -1,0 +1,27 @@
+{%extends 'all_posts/base.html'%} 
+{% block content %}
+
+<div class="container">
+
+  <div class="row"style="margin-top:10ch">
+    {% if profiles %}
+        <h2>Found {{profiles|length}} for username{{message}}</h2>
+    {% else %}
+        <h2>Found no profiles for username{{message}}</h2>
+    {% endif %}
+
+  </div>
+
+  <div class="row">
+
+  {% if profiles %}
+
+    {% for profile in profiles %}
+      <div class="col-sm-6 col-md-3">
+        <h1><a href="/find_profile/{{profile.id}}">{{profile.user}}</a></h1>
+      </div>
+    {% endfor %}
+  {% endif %}
+  </div>
+</div>
+{% endblock %}
