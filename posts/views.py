@@ -1,8 +1,8 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse, Http404
-from .models import Image, Comments
+from .models import Image, Comments, Profile
 from django.contrib.auth.decorators import login_required
-from .forms import NewCommentForm, NewPostForm
+from .forms import NewCommentForm, NewPostForm, NewProfileForm
 
 # Create your views here.
 
@@ -24,9 +24,9 @@ def new_post(request):
         form = NewPostForm(request.POST, request.FILES)
         if form.is_valid():
             post = form.save(commit=False)
-            post.editor = current_user
+            post.profile = current_user
             post.save()
-            return redirect('allImages')
+        return redirect('allImages')
 
     else:
         form = NewPostForm()

@@ -4,19 +4,16 @@ from .models import Image, Comments, Profile
 class NewPostForm(forms.ModelForm):
     class Meta:
         model = Image
-        exclude = ['profile']
-        widgets = {
-            'tags': forms.CheckboxSelectMultiple(),
-        }
+        exclude = ['profile', 'publish_date']
+
 
 class NewCommentForm(forms.ModelForm):
     class Meta:
         model = Comments
-        exclude = []
-        widgets = {
-            'tags': forms.CheckboxSelectMultiple(),
-        }
+        exclude = ['date_posted', 'author']
+
+   
 class NewProfileForm(forms.ModelForm):
     class Meta:
         model = Profile
-        exclude = []
+        exclude = ['user']
