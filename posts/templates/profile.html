@@ -23,6 +23,16 @@
 
         {% endif %}
     </div>
+    <div class="row">
+        <h2 class="text-center"> Uploaded Photo</h2>
+        {% for posts in image %}
+        <div class="col-md-4">
+          <a href="{% url 'image' posts.id %}"><img src="{{posts.image.url}}" class="img-responsive" alt="Image"></a>
+        </div>
+        {% endfor%}
+    
+    
+      </div>
 </div>
 
 {% endblock %}

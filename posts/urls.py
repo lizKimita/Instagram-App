@@ -9,6 +9,7 @@ urlpatterns=[
     url(r'^profile/$',views.profile,name = 'NewProfile'),
     url(r'^new_profile/$',views.new_profile,name = 'new_profile'),
     url(r'^new/post$', views.new_post, name='new_post'),
+    url(r'^image/(\d+)',views.image,name ='image'),
     # url(r'^search/', views.search_results, name='search_results')
    
 ]

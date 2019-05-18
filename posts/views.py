@@ -58,3 +58,10 @@ def profile(request):
         return redirect('new_profile')
 
     return render(request,'profile.html',{ 'profile':profile,'image':image,'current_user':current_user})
+
+def image(request,image_id):
+    try:
+        image = Image.objects.get(id = image_id)
+    except ObjectDoesNotExist:
+        raise Http404()
+    return render(request,'all-news/image.html',{'image':image})
