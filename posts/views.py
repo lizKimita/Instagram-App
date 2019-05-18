@@ -33,6 +33,20 @@ def new_post(request):
         form = NewPostForm()
     return render(request, 'new_post.html', {"form": form})
 
+def comments(request):
+    current_user = request.user
+    if request.method == 'POST':
+        form = NewCommentForm(request.POST, request.FILES)
+        if form.is_valid():
+            comment = form.save(commit=False)
+            comment.profile = current_user
+            comment.save()
+        return redirect('allImages')
+    else:
+        form = NewCommentForm()
+    return redirect(request, 'comments.html',{"form": form})
+    
+
 def new_profile(request):
     current_user = request.user
     if request.method == 'POST':
