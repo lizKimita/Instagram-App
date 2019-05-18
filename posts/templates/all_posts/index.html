@@ -32,7 +32,8 @@
                                 <h5 class="card-title">{{image_item.image_name}}</h5>
                                 </p>{{image_item.image_caption}}</p>
                                 <p>{{image_item.publish_date}}</p>
-                                <p> COMMENTS SECTION</p>
+
+                                <button><a href="{% url 'comments' %}">Add a Comment</a> {{image_item.comments}}</button>
                                 <div class="row">
                                         {% autoescape on %}
                                         {{image_item.post| safe}}

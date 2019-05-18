@@ -45,7 +45,7 @@ def comments(request):
     else:
         form = NewCommentForm()
     return redirect(request, 'comments.html',{"form": form})
-    
+
 
 def new_profile(request):
     current_user = request.user
