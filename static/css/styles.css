@@ -45,3 +45,26 @@ body {
   font-weight: bold;
   color: rgb(61, 61, 109);
 }
+.profilepic {
+  border-radius: 50%;
+  max-width: 100%;
+  width: 75%;
+  height: 100%;
+
+}
+.profilefollowers li{
+  display: inline-block;
+  font-weight: 450;
+  font-size: 18px;
+}
+.profileedit li{
+  display: inline-block;
+  
+}
+.userprofile {
+  font-size: 40px;
+}
+.prof {
+  font-size: 10px;
+  font-weight: bold;  
+}
