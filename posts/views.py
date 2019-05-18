@@ -3,6 +3,7 @@ from django.http import HttpResponse, Http404
 from .models import Image, Comments, Profile
 from django.contrib.auth.decorators import login_required
 from .forms import NewCommentForm, NewPostForm, NewProfileForm
+from django.core.exceptions import ObjectDoesNotExist
 
 # Create your views here.
 
@@ -46,3 +47,14 @@ def new_profile(request):
     else:
         form = NewProfileForm()
     return render(request, 'new_profile.html', {"form": form})
+
+def profile(request):
+    current_user = request.user
+    image = Image.objects.filter(profile = current_user)
+
+    try:
+        profile = Profile.objects.get(user=current_user)
+    except ObjectDoesNotExist:
+        return redirect('new_profile')
+
+    return render(request,'profile.html',{ 'profile':profile,'image':image,'current_user':current_user})
