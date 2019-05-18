@@ -33,7 +33,6 @@ def new_post(request):
         form = NewPostForm()
     return render(request, 'new_post.html', {"form": form})
 
-
 def new_profile(request):
     current_user = request.user
     if request.method == 'POST':
@@ -47,6 +46,18 @@ def new_profile(request):
     else:
         form = NewProfileForm()
     return render(request, 'new_profile.html', {"form": form})
+
+def edit_profile(request):
+    current_user = request.user
+    if request.method == 'POST':
+        user = Profile.objects.get(user=request.user)
+        form = NewProfileForm(request.POST, request.FILES, instance=user)
+        if form.is_valid():
+            form.save()
+        return redirect('NewProfile')
+    else:
+        form = NewProfileForm()
+    return render(request,'edit_profile.html',{'form':form})
 
 def profile(request):
     current_user = request.user
@@ -64,4 +75,5 @@ def image(request,image_id):
         image = Image.objects.get(id = image_id)
     except ObjectDoesNotExist:
         raise Http404()
-    return render(request,'all-news/image.html',{'image':image})
+    return render(request,'all_posts/images.html',{'image':image})
+
