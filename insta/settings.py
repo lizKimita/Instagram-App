@@ -28,7 +28,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-LOGIN_REDIRECT_URL = "/"
+LOGIN_REDIRECT_URL = "/feeds"
+PASSWORD_REDIRECT_URL = "/"
 
 # Email configurations
 EMAIL_USE_TLS = config('EMAIL_USE_TLS')
@@ -41,6 +42,7 @@ EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
 
 INSTALLED_APPS = [
     'posts',
+    'users',
     'bootstrap3',
     'tinymce',
     'django.contrib.admin',

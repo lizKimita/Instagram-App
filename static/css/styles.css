@@ -30,4 +30,18 @@ body {
     font-family: 'Cookie', cursive;
     font-size: 45px;
 }
-
+.instaform {
+  text-align: center;
+  font-family: 'Cookie', cursive;
+  font-size: 60px;
+  font-weight: 590;
+}
+.footerlist li {
+  text-decoration: none;
+  display: inline-block;
+  font-weight: 450;
+  padding: 10px;
+  font-size: 13px;
+  font-weight: bold;
+  color: rgb(61, 61, 109);
+}

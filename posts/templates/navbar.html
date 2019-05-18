@@ -23,17 +23,18 @@
     
     <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
+            <a class="nav-link" href=""> <i class="far fa-compass" style="font-size:30px; color: black"></i> </a>
+            </li>
+        <li class="nav-item active">
           <a class="nav-link" href="{%url 'allImages' %}"><img src="http://www.clker.com/cliparts/f/n/o/m/6/C/transparent-heart.svg" alt="" style="width:45px;height:30px;"></i></a>
         </li>
+        
             {% if user.is_authenticated %}
               <li class="dropdown">
-                <!-- <a href="#" class="dropdown-toggle btn btn-default" data-toggle="dropdown" role="button" aria-expanded="false">Account
-                          <span class="caret"></span>
-                      </a> -->
                       <a class="nav-link" href="{%url 'allImages' %}" data-toggle="dropdown" role="button"><img src="https://image.flaticon.com/icons/png/128/118/118781.png" alt="" style="width:30px;height:30px;"></i></a>
                 <ul class="dropdown-menu" role="menu">
                   <li>
-                    <a style="font-size:15px;" href="">Home</a>
+                    <a style="font-size:15px;" href="">{{post.user.author}}</a>
                   </li>
                   <li>
                       <a style="font-size:15px;" href="{%url 'new_post'%}">Create New Post</a>

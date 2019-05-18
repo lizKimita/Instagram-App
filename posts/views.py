@@ -5,8 +5,13 @@ from django.contrib.auth.decorators import login_required
 from .forms import NewCommentForm, NewPostForm
 
 # Create your views here.
+
+def home(request):
+    return render(request,'all_posts/home.html')
+
+    
 @login_required(login_url='/accounts/login/')
-def all_posts(request):
+def feeds(request):
     image = Image.get_images()
     title = "posts"
     
@@ -21,7 +26,7 @@ def new_post(request):
             post = form.save(commit=False)
             post.editor = current_user
             post.save()
-        return redirect('allImages')
+            return redirect('allImages')
 
     else:
         form = NewPostForm()
