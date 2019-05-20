@@ -62,11 +62,6 @@ class Image(models.Model):
         self.image_caption = update
         self.save()
 
-    # @classmethod
-    # def search_by_username(cls,search_term):
-    #     profile = cls.objects.filter(user__username=search_term)
-    #     return profile
-
     class Meta:
         ordering = ['-id']
 
