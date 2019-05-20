@@ -47,5 +47,5 @@ For more information, questions, or help using the program, get in touch with me
 
 ### License
 MIT
-Copyright (c) {2019} **Elizabeth Wanjiku Kimita**
+Copyright (c) 2019 **Elizabeth Wanjiku Kimita**
   
