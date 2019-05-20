@@ -46,6 +46,12 @@ def comments(request):
         form = NewCommentForm()
     return redirect(request, 'comments.html',{"form": form})
 
+def image(request,image_id):
+    try:
+        image = Image.objects.get(id = image_id)
+    except ObjectDoesNotExist:
+        raise Http404()
+    return render(request,'all_posts/image.html',{'image':image})
 
 def new_profile(request):
     current_user = request.user
@@ -101,9 +107,10 @@ def find_profile(request,profile_id):
 
     try :
         profile = Profile.objects.get(id = profile_id)
+        image = Image.objects.filter()
 
     except ObjectDoesNotExist:
         
         raise Http404()
 
-    return render(request, 'all_posts/find_profile.html', {'profile':profile})
+    return render(request, 'all_posts/find_profile.html', {'profile':profile, "image":image})

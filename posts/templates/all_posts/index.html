@@ -23,17 +23,15 @@
                 {% for image_item in image %}
             <div class="row work-item-row">
                     <div class="col-md-10 col-sm-offset-2 project" >
-                    <div class="card" style="width: 70rem; height: 80rem;">
-                            <ul class="list-group list-group-flush">
-                                <li class="list-group-item">{{image_item.profile}}</li>
-                            </ul>
+                    <div class="card" style="width: 60rem;">
+                            <h2 style="margin-left:20px">{{image_item.profile}}</h2>
                             <img src="{{image_item.image.url}}" class="img-responsive" alt="Image" style=" width:800px;height:400px;padding:0;"alt="">
                             <div class="card-body">
-                                <h5 class="card-title">{{image_item.image_name}}</h5>
+                                <h5 >{{image_item.image_name}}</h5>
                                 </p>{{image_item.image_caption}}</p>
                                 <p>{{image_item.publish_date}}</p>
 
-                                <button><a href="{% url 'comments' %}">Add a Comment</a> {{image_item.comments}}</button>
+                                <!-- <a href="{% url 'comments' %}"></a> {{image_item.comments}} -->
                                 <div class="row">
                                         {% autoescape on %}
                                         {{image_item.post| safe}}
@@ -42,7 +40,7 @@
                             </div>
                             <form class="navbar-form" role="search" action="">
                             <div class="input-group">
-                                <input type="text" class="form-control" placeholder="Add Comment" name="article">
+                                <input type="text" class="form-control" placeholder="Add Comment" name="comment">
                             </div>
                             </form>
                             </div>
