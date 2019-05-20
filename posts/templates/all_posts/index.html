@@ -11,7 +11,22 @@
             <img src="{{profile.profile_pic.url}}" width=200 class="profile-pic img-responsive center-block">
             {% endfor %}
                 <h1>{{user}}</h1>
-                <footer class="page-footer font-large">
+                <div class="sidebar" style="padding-top:10px">
+                        <div class="heading" style="text-align:center; font-size: 20px;">
+                            Stories
+                        </div>
+                        <div class="content">
+                            <ul class="list-group">
+                                <li class="list-group-item list-group-item-light">Charlie</li>
+                                <li class="list-group-item list-group-item-light">Lizzy</li>
+                                <li class="list-group-item list-group-item-light">Annie</li>
+                                <li class="list-group-item list-group-item-light">Kevin</li>
+                                <li class="list-group-item list-group-item-light">Anto</li>
+                            </ul>
+                        </div>
+                 </div>
+
+                <footer class="page-footer font-large" style="padding-top:30px">
                     <!-- <div class="footer-copyright text-center py-3"> -->
                         <p class="footer">About Us.Support.Press.API.Jobs.Privacy.</p> 
                         <p class="footer">Terms.Directory.Profiles.Hashtags.Language</p>   
@@ -29,6 +44,9 @@
                             <h2 style="margin-left:20px">{{image_item.profile}}</h2>
                             <img src="{{image_item.image.url}}" class="img-responsive" alt="Image" style=" width:800px;height:400px;padding:0;"alt="">
                             <div class="card-body">
+                                <i style="font-size:20px" class="far fa-heart"></i>
+                                <i style="font-size:20px" class="far fa-comment"></i>
+                                <i style="font-size:20px" class="fas fa-arrow-circle-up"></i>
                                 <h5 >{{image_item.image_name}}</h5>
                                 </p>{{image_item.image_caption}}</p>
                                 <p>{{image_item.publish_date}}</p>

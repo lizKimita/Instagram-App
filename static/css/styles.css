@@ -17,8 +17,13 @@ body {
   
   .about-side {
       position:fixed;
-      padding-top: 20%;
+      padding-top: 10%;
   }
+  .content{
+    overflow: auto;
+    width: 120%;
+    height: 150px;
+   }
 
 .page-footer{
     background-color:#fafafa;
@@ -67,4 +72,8 @@ body {
 .prof {
   font-size: 10px;
   font-weight: bold;  
+}
+.heading{
+  font-size: 20%;
+  font-weight: bold;
 }
