@@ -7,7 +7,9 @@
     <div class="row">
         <!-- side content -->
         <div class="col-md-2 about-me about-side text-center hidden-xs">
-                <img src="" width=200 class="profile-pic img-responsive center-block">
+            {%for profile in user_pic%}
+            <img src="{{profile.profile_pic.url}}" width=200 class="profile-pic img-responsive center-block">
+            {% endfor %}
                 <h1>{{user}}</h1>
                 <footer class="page-footer font-large">
                     <!-- <div class="footer-copyright text-center py-3"> -->

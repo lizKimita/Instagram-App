@@ -4,7 +4,7 @@ from .models import Image, Comments, Profile
 class NewPostForm(forms.ModelForm):
     class Meta:
         model = Image
-        exclude = ['profile', 'publish_date']
+        exclude = ['profile', 'publish_date','poster_id']
 
 
 class NewCommentForm(forms.ModelForm):
@@ -16,4 +16,4 @@ class NewCommentForm(forms.ModelForm):
 class NewProfileForm(forms.ModelForm):
     class Meta:
         model = Profile
-        exclude = ['user']
+        exclude = ['user', 'userId']

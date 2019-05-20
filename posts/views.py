@@ -13,10 +13,12 @@ def home(request):
     
 @login_required(login_url='/accounts/login/')
 def feeds(request):
+    current_user = request.user
     image = Image.get_images()
+    user_pic = Profile.objects.filter(user = current_user)
     title = "posts"
     
-    return render(request, 'all_posts/index.html', {"title":title, "image":image})
+    return render(request, 'all_posts/index.html', {"title":title, "image":image, "user_pic":user_pic})
 
 @login_required(login_url='/accounts/login/')
 def new_post(request):
@@ -26,6 +28,7 @@ def new_post(request):
         if form.is_valid():
             post = form.save(commit=False)
             post.profile = current_user
+            post.poster_id = current_user.id
             post.save()
         return redirect('allImages')
 
@@ -60,6 +63,7 @@ def new_profile(request):
         if form.is_valid():
             profile = form.save(commit=False)
             profile.user = current_user
+            profile.userId = request.user.id
             profile.save()
         return redirect('NewProfile')
 
@@ -104,13 +108,13 @@ def search_results(request):
         return render(request, 'all_posts/search.html',{"message": message})
 
 def find_profile(request,profile_id):
-
+    profile_id
     try :
-        profile = Profile.objects.get(id = profile_id)
-        image = Image.objects.filter()
+        profile = Profile.objects.get(user_id = profile_id)
+        image = Image.objects.filter(profile_id = profile_id)
 
     except ObjectDoesNotExist:
         
         raise Http404()
 
-    return render(request, 'all_posts/find_profile.html', {'profile':profile, "image":image})
+    return render(request, 'all_posts/find_profile.html', {'profile':profile, "image":image, "poster_id":profile_id})

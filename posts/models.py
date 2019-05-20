@@ -9,6 +9,7 @@ class Profile(models.Model):
     profile_pic = models.ImageField(upload_to = 'images/', blank = True)
     user = models.ForeignKey(User,on_delete = models.CASCADE,null = True)
     bio = models.TextField(max_length = 100)
+    userId =models.IntegerField(default = 0)
 
     def save_profile(self):
         self.save()
@@ -27,7 +28,7 @@ class Profile(models.Model):
 
     @classmethod
     def search_by_username(cls,search_term):
-        profile = cls.objects.filter(user__username=search_term)
+        profile = cls.objects.filter(user__username__icontains=search_term)
         return profile
 
     def __str__(self):
@@ -39,6 +40,7 @@ class Image(models.Model):
     image_caption = models.CharField(max_length = 200)
     publish_date = models.DateTimeField(auto_now_add=True)
     profile = models.ForeignKey(User,on_delete = models.CASCADE,null = True)
+    poster_id=models.IntegerField(default=0)
 
     @classmethod
     def get_images(cls):

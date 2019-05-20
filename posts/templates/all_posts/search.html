@@ -18,7 +18,7 @@
 
     {% for profile in profiles %}
       <div class="col-sm-6 col-md-3">
-        <h1><a href="/find_profile/{{profile.id}}">{{profile.user}}</a></h1>
+        <h1><a href="/find_profile/{{profile.user.id}}">{{profile.user}}</a></h1>
       </div>
     {% endfor %}
   {% endif %}
