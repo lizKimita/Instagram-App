@@ -10,15 +10,29 @@ from django.core.exceptions import ObjectDoesNotExist
 def home(request):
     return render(request,'all_posts/home.html')
 
-    
+
 @login_required(login_url='/accounts/login/')
 def feeds(request):
     current_user = request.user
     image = Image.get_images()
+    comments = Comments.objects.all()
     user_pic = Profile.objects.filter(user = current_user)
     title = "posts"
-    
-    return render(request, 'all_posts/index.html', {"title":title, "image":image, "user_pic":user_pic})
+    a = request.POST.get("id", "")
+
+    if request.method == 'POST':
+        form = NewCommentForm(request.POST)
+        if form.is_valid():
+            form = form.save(commit=False)
+            form.author = request.user
+            form.post_id = request.user.id
+            form.image = a
+
+            form.save()
+            return redirect('allImages')
+    else:
+        form = NewCommentForm()
+    return render(request, 'all_posts/index.html', {"title":title, "image":image, "user_pic":user_pic, "form":form, "comments":comments})
 
 @login_required(login_url='/accounts/login/')
 def new_post(request):
@@ -37,17 +51,25 @@ def new_post(request):
     return render(request, 'new_post.html', {"form": form})
 
 def comments(request):
+    post = Image.objects.filter(id=id)
     current_user = request.user
+
     if request.method == 'POST':
-        form = NewCommentForm(request.POST, request.FILES)
+        form = NewCommentForm(request.POST)
         if form.is_valid():
-            comment = form.save(commit=False)
-            comment.profile = current_user
-            comment.save()
-        return redirect('allImages')
+            form = form.save(commit=False)
+            form.user = request.user
+            form.save()
+            return redirect('allImages',id)
     else:
         form = NewCommentForm()
-    return redirect(request, 'comments.html',{"form": form})
+
+    try:
+        user_comment = Comments.objects.filter(post_id=id)
+    except Exception as e:
+        raise Http404()
+
+    return render(request,'all_posts/index.html',{"post":post, "current_user": current_user,"form": form, 'comments':user_comment})
 
 def image(request,image_id):
     try:
@@ -114,7 +136,7 @@ def find_profile(request,profile_id):
         image = Image.objects.filter(profile_id = profile_id)
 
     except ObjectDoesNotExist:
-        
+
         raise Http404()
 
     return render(request, 'all_posts/find_profile.html', {'profile':profile, "image":image, "poster_id":profile_id})

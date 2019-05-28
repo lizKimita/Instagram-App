@@ -15,7 +15,7 @@ class Profile(models.Model):
         self.save()
 
     def delete_profile(self):
-        self.delete()   
+        self.delete()
 
     def update_bio(self,bio):
         self.bio = bio
@@ -42,6 +42,7 @@ class Image(models.Model):
     profile = models.ForeignKey(User,on_delete = models.CASCADE,null = True)
     poster_id=models.IntegerField(default=0)
 
+
     @classmethod
     def get_images(cls):
         image = cls.objects.all()
@@ -67,10 +68,11 @@ class Image(models.Model):
 
 
 class Comments(models.Model):
-    image = models.ForeignKey(Image, on_delete=models.CASCADE)
+    image = models.IntegerField(default=0)
     author = models.ForeignKey(User, on_delete = models.CASCADE)
-    comment_message = models.CharField(max_length = 200)
-    date_posted = models.DateTimeField(auto_now_add=True)
+    comment=models.CharField(max_length=150)
+    date_posted = models.DateField(auto_now_add=True)
+    post_id=models.IntegerField(default=0)
 
     @classmethod
     def get_comments(cls):
@@ -78,7 +80,7 @@ class Comments(models.Model):
         return comment
 
     def save_comment(self):
-        self.save()     
+        self.save()
 
     def delete_comment(self):
         Image.objects.filter().delete()

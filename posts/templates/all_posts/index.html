@@ -1,4 +1,5 @@
 {% extends 'all_posts/base.html' %}
+{% load bootstrap3 %}
 
 {% block content %}
     {{block.super}}
@@ -58,11 +59,37 @@
                                        {% endautoescape %}
                                 </div>
                             </div>
-                            <form class="navbar-form" role="search" action="">
-                            <div class="input-group">
-                                <input type="text" class="form-control" placeholder="Add Comment" name="comment">
-                            </div>
-                            </form>
+                            <div class="row">
+                                <div class="col-md-2"></div>
+                                  <div class="col-md-8">
+                                    <div>
+                                      <p class="commentheader">Comments <i class="far fa-comments"></i></p>
+                                      <hr>
+                                      {%if comments%}
+                                      {%for comment in comments%}
+                                      {% if image_item.id is comment.image %}
+                                      <p style="margin-top:5%"> <i class="fas fa-quote-left"></i> {{comment.comment}} <i class="fas fa-quote-right"></i></p>
+                                      <i>By: {{comment.author}}</i>
+                                      <br>
+                                      {% endif %}
+                                      {%endfor%}
+                                      {%else%}
+                                      <p class="alert alert-info">Be the 1st to comment</p>
+                                      {%endif%}
+                                    </div>
+
+                                    <form class="" action="" method="post" style="margin-top:2em">
+                                      {%csrf_token%}
+                                      {% bootstrap_form form%}
+                                      <!-- <button class="btn btn-outline-default" type="submit" name="button">Comment</button> -->
+                                      <input type="hidden" name="id" value="{{image_item.id}}">
+                                    </form>
+                                  
+                        
+                                  </div>
+                            
+                                  <div class="col-md-2"></div>
+                              </div>
                             </div>
                         </div>
             </div>
