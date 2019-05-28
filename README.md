@@ -32,7 +32,7 @@ This site is a clone of the original Instagram application. Users can sign up, l
 * Application should open on `localhost:8000` 
 
 ## Known Bugs
-The comment, follow and like functionalities are not functioning properly yet.
+The Follow and like functionalities are not functioning properly yet.
 
 ## Technologies Used
 * Python 3.6
